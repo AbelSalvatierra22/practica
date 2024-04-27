@@ -1,0 +1,61 @@
+@model examenparcial.Models.Contacto
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: center; color:#142239">
+            <h2>Crea tu cuenta!</h2>
+        </div>
+        @using (Html.BeginForm("EnviarMensaje", "Contacto", FormMethod.Post, new { @class = "contact-form" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Nombre del titular" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category)
+                @Html.TextAreaFor(model => model.Category, new { @class = "form-control", placeholder = "Tipo de cuenta" })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "validation-message" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Message)
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", placeholder = "Saldo inicial" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "validation-message" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Correo electrónico" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message" })
+            </div>
+
+            <button type="submit">Enviar</button>
+        }
+
+        <!-- Mostrar los datos del modelo después de enviar el formulario -->
+        @if (Model != null)
+{
+    <div class="container">
+        <h3>Datos ingresados:</h3>
+        <p><strong>Nombre:</strong> @Model.Name</p>
+        <p><strong>Categoría:</strong> @Model.Category</p>
+        <p><strong>Mensaje:</strong> @Model.Message</p>
+        <p><strong>Correo electrónico:</strong> @Model.Email</p>
+    </div>
+
+        }
+    </div>
+
+    <h1>@ViewData["Message"]</h1>
+</body>
+</html>
+
