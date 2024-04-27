@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace examenparcial.Data;
 
 public class ApplicationDbContext : IdentityDbContext
@@ -9,4 +10,5 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+    public DbSet<examenparcial.Models.Contacto> DataContacto {get; set; }
 }
